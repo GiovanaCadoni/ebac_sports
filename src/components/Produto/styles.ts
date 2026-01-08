@@ -2,7 +2,12 @@ import styled from 'styled-components'
 
 import { cores } from '../../styles'
 
-export const Produto = styled.div``
+export const Produto = styled.li`
+  background-color: ${cores.corSecundaria};
+  padding: 16px;
+  border-radius: 8px;
+  list-style: none;
+`
 
 export const Titulo = styled.h3`
   min-height: 64px;

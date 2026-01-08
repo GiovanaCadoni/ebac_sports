@@ -1,9 +1,6 @@
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store'
-
-type Props = {
-  itensNoCarrinho?: any[]
-}
+import { Header as HeaderEstilizado } from './styles'
 
 const Header = () => {
   const itensNoCarrinho = useSelector(
@@ -11,10 +8,15 @@ const Header = () => {
   )
 
   return (
-    <header>
+    <HeaderEstilizado>
       <h1>EBAC Sports</h1>
-      <p>Itens no carrinho: {itensNoCarrinho.length}</p>
-    </header>
+
+      <div>
+        <span>Itens no carrinho</span>
+        <img src="/cart.png" alt="Carrinho" />
+        <span>{itensNoCarrinho.length}</span>
+      </div>
+    </HeaderEstilizado>
   )
 }
 

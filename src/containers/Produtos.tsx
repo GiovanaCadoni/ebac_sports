@@ -1,29 +1,27 @@
 import { useDispatch } from 'react-redux'
 import { adicionarAoCarrinho } from '../store/carSlice'
-import { Produto } from '../App'
+import { Produto as ProdutoType } from '../App'
+import Produto from '../components/Produto'
 import { AppDispatch } from '../store'
+import * as S from './styles'
 
 type Props = {
-  produtos: Produto[]
+  produtos: ProdutoType[]
 }
 
 const Produtos = ({ produtos }: Props) => {
   const dispatch = useDispatch<AppDispatch>()
 
   return (
-    <ul>
+    <S.Produtos>
       {produtos.map((produto) => (
-        <li key={produto.id}>
-          <img src={produto.imagem} alt={produto.nome} width={120} />
-          <h3>{produto.nome}</h3>
-          <p>R$ {produto.preco}</p>
-
-          <button onClick={() => dispatch(adicionarAoCarrinho(produto))}>
-            Adicionar ao carrinho
-          </button>
-        </li>
+        <Produto
+          key={produto.id}
+          produto={produto}
+          aoComprar={(produto) => dispatch(adicionarAoCarrinho(produto))}
+        />
       ))}
-    </ul>
+    </S.Produtos>
   )
 }
 
